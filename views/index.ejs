@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>HELLO</title>
+	</head>
+	<body>
+		<h1>Hello Admin</h1>
+		<form action="/" method="post">
+			<input
+				type="text"
+				placeholder="username"
+				name="username"
+				required
+			/>
+			<input
+				type="text"
+				placeholder="fullname"
+				name="fullname"
+				required
+			/>
+			<input
+				type="password"
+				placeholder="password"
+				name="password"
+				required
+			/>
+			<input
+				type="date"
+				placeholder="dateOfBirth"
+				name="dateOfBirth"
+				required
+			/>
+			<input type="submit" name="submit" required />
+		</form>
+
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Sr No.</th>
+					<th>Username</th>
+					<th>Fullname</th>
+					<th>DOB</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% students.forEach((student, index) => { %>
+				<tr>
+					<td><%= index + 1 %></td>
+					<td><%= student.username %></td>
+					<td><%= student.fullname %></td>
+					<td>
+						<%= new Date(student.dateOfBirth).toLocaleString() %>
+					</td>
+					<td><a href="/student/<%= student._id %>">View</a></td>
+				</tr>
+				<% }) %>
+			</tbody>
+		</table>
+	</body>
+</html>
